@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  bid-bay-db:
+    image: postgres
+    restart: always
+    container_name: bid-bay-db
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: example
+      PGDATA: /data/postgres
+    volumes:
+      - postgres:/data/postgres
+
+volumes:
+  postgres:
