@@ -7,16 +7,23 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "db:push" : "npx drizzle-kit push --config=drizzle.confing.ts",
-    "db:studio" : "npx drizzle-kit studio --config=drizzle.confing.ts"
+    "db:push": "npx drizzle-kit push --config=drizzle.confing.ts",
+    "db:studio": "npx drizzle-kit studio --config=drizzle.confing.ts"
   },
   "dependencies": {
+    "@auth/drizzle-adapter": "^1.2.0",
+    "@radix-ui/react-slot": "^1.0.2",
     "@t3-oss/env-nextjs": "^0.10.1",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
     "drizzle-orm": "^0.31.2",
     "next": "14.2.3",
+    "next-auth": "^5.0.0-beta.19",
     "postgres": "^3.4.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "tailwind-merge": "^2.3.0",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@types/node": "^20",
