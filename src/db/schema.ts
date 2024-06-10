@@ -63,36 +63,36 @@ export const verificationTokens = pgTable(
   })
 );
 
-// export const items = pgTable("bb_item", {
-//   id: serial("id").primaryKey(),
-//   userId: text("userId")
-//     .notNull()
-//     .references(() => users.id, { onDelete: "cascade" }),
-//   name: text("name").notNull(),
-//   fileKey: text("fileKey").notNull(),
-//   currentBid: integer("currentBid").notNull().default(0),
-//   startingPrice: integer("startingPrice").notNull().default(0),
-//   bidInterval: integer("bidInterval").notNull().default(100),
-//   endDate: timestamp("endDate", { mode: "date" }).notNull(),
-// });
+export const items = pgTable("bb_item", {
+  id: serial("id").primaryKey(),
+  userId: text("userId")
+    .notNull()
+    .references(() => users.id, { onDelete: "cascade" }),
+  name: text("name").notNull(),
+  fileKey: text("fileKey").notNull(),
+  currentBid: integer("currentBid").notNull().default(0),
+  startingPrice: integer("startingPrice").notNull().default(0),
+  bidInterval: integer("bidInterval").notNull().default(100),
+  endDate: timestamp("endDate", { mode: "date" }).notNull(),
+});
 
 export const bids = pgTable("bb_bids", {
   id: serial("id").primaryKey(),
   amount: integer("amount").notNull(),
-  // itemId: serial("itemId")
-  //   .notNull()
-  //   .references(() => items.id, { onDelete: "cascade" }),
+  itemId: serial("itemId")
+    .notNull()
+    .references(() => items.id, { onDelete: "cascade" }),
   userId: text("userId")
     .notNull()
     .references(() => users.id, { onDelete: "cascade" }),
   timestamp: timestamp("timestamp", { mode: "date" }).notNull(),
 });
 
-// export const usersRelations = relations(bids, ({ one }) => ({
-//   user: one(users, {
-//     fields: [bids.userId],
-//     references: [users.id],
-//   }),
-// }));
+export const usersRelations = relations(bids, ({ one }) => ({
+  user: one(users, {
+    fields: [bids.userId],
+    references: [users.id],
+  }),
+}));
 
-// export type Item = typeof items.$inferSelect;
+export type Item = typeof items.$inferSelect;

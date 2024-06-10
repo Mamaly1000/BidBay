@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Roboto } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import Header from "@/containers/Header";
 
-const inter = Inter({ subsets: ["latin"] });
+const roboto = Roboto({ subsets: ["latin"], preload: true, weight: "400" });
 
 export const metadata: Metadata = {
   title: "Bid Bay",
@@ -19,11 +20,12 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          inter.className,
-          "min-h-screen bg-background font-sans antialiased"
+          roboto.className,
+          "min-h-screen bg-neutral-700 text-white antialiased"
         )}
       >
-        {children}
+        <Header />
+        <main className="w-full p-2 lg:p-5">{children}</main>
       </body>
     </html>
   );
