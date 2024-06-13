@@ -13,14 +13,14 @@ const Header = async () => {
 
   return (
     <section className="bg-neutral-800 text-white w-full border-b-[1px] border-orange-500">
-      <div className="container ">
+      <div className="md:container px-2 md:px-0 ">
         <div className=" w-full flex items-center justify-between gap-1">
           <div className="flex items-center justify-start gap-4">
             <Link
               href={"/"}
-              className="w-fit flex items-center justify-start gap-2"
+              className="w-fit flex items-center justify-start gap-2 p-0"
             >
-              <div className="relative w-[80px] h-[80px] aspect-video flex items-center justify-center overflow-hidden ">
+              <div className="relative w-[70px] p-0 h-[70px] aspect-video flex items-center justify-start overflow-hidden ">
                 <Image
                   className="object-cover"
                   fill

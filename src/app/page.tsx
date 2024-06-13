@@ -19,9 +19,11 @@ export default async function HomePage() {
         title="items for sale"
         subHeading="here you can bid items that are available for sale."
       />
-      {items.map((item) => (
-        <ItemCard item={item} key={item.id} />
-      ))}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-5 w-full">
+        {items.map((item) => (
+          <ItemCard item={item} key={item.id} />
+        ))}
+      </div>
     </section>
   );
 }

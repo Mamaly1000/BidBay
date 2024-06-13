@@ -34,6 +34,23 @@ const UploadWidget = ({
       }}
       options={{
         maxFiles: 1,
+        styles: {
+          palette: {
+            window: "#2A2F3C",
+            windowBorder: "#90A0B3",
+            tabIcon: "#F97316",
+            menuIcons: "#5A616A",
+            textDark: "#000000",
+            textLight: "#FFFFFF",
+            link: "#F97316",
+            action: "#F97316",
+            inactiveTabIcon: "#757A80",
+            error: "#F44235",
+            inProgress: "#F97316",
+            complete: "#20B832",
+            sourceBg: "#020817",
+          },
+        },
       }}
       uploadPreset={env.NEXT_PUBLIC_CLOUDINARY_CLOUD_PRESET}
     >
