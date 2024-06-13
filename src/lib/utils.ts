@@ -15,19 +15,18 @@ export function isBidOver(item: Item) {
 }
 export const headertems = [
   {
-    label: "Create item",
-    url: "/items/create",
+    label: "all auctions",
+    url: "/",
     Icon: Box,
   },
   {
-    label: "my Auctions",
-    url: "/auctions",
-    Icon: BadgeDollarSign,
-  },
-  {
-    label: "Create auction",
-    url: "/auctions/create",
+    label: "create auction",
+    url: "/items/create",
     Icon: Gavel,
   },
+  {
+    Icon: BadgeDollarSign,
+    url: "/auctions",
+    label: "my auctions",
+  },
 ];
-import { Item } from "@/db/schema";

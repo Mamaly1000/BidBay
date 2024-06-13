@@ -17,6 +17,8 @@ import RefreshBtn from "@/components/ui/RefreshBtn";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Clock } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { Avatar } from "@/components/ui/avatar";
+import UserAvatar from "@/components/ui/UserAvatar";
 
 const ItemPage = async ({ params }: { params: { itemId: string } }) => {
   const session = await auth();
@@ -102,11 +104,19 @@ const ItemPage = async ({ params }: { params: { itemId: string } }) => {
             {allBids.map((bid) => (
               <li key={bid.id} className="bg-gray-900 rounded-xl p-8">
                 <div className="flex gap-4">
-                  <div>
+                  <div className="flex items-center justify-start gap-2">
                     <span className="font-bold">
                       ${formatToDollar(bid.amount)}
                     </span>
-                    by <span className="font-bold">{bid.user.name}</span>
+                    by
+                    <span className="font-bold flex items-center justify-start gap-2">
+                      <UserAvatar
+                        fallback={bid.user.name}
+                        src={bid.user.image}
+                        alt={bid.user.name}
+                      />
+                      {bid.user.name}
+                    </span>
                   </div>
                   <div className="flex items-center justify-start gap-2">
                     {formatDistanceToNowStrict(bid.timestamp, {

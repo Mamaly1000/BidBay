@@ -1,4 +1,5 @@
 "use client";
+import UserAvatar from "@/components/ui/UserAvatar";
 import { env } from "@/env";
 import {
   KnockFeedProvider,
@@ -7,7 +8,11 @@ import {
 } from "@knocklabs/react";
 import React, { useRef, useState } from "react";
 
-const NotifNav = () => {
+const NotifNav = ({
+  user,
+}: {
+  user?: { name?: string | null; image?: string | null };
+}) => {
   const [isVisible, setIsVisible] = useState(false);
   const notifButtonRef = useRef(null);
   return (
@@ -21,6 +26,7 @@ const NotifNav = () => {
         isVisible={isVisible}
         onClose={() => setIsVisible(false)}
       />
+      <UserAvatar src={user?.image} fallback={user?.name} />
     </KnockFeedProvider>
   );
 };

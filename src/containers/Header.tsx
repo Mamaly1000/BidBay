@@ -5,7 +5,7 @@ import Link from "next/link";
 import { auth } from "@/auth";
 import SignOut from "@/components/SignOut";
 import SignIn from "@/components/SignIn";
-import MainNav from "./MainNav"; 
+import MainNav from "./MainNav";
 import NotifNav from "./NotifNav";
 
 const Header = async () => {
@@ -13,7 +13,7 @@ const Header = async () => {
   const user = session?.user;
 
   return (
-    <section className="bg-neutral-800 text-white w-full border-b-[1px] border-orange-500">
+    <section className="bg-neutral-800 text-white w-full border-b-[1px] border-orange-500 dark">
       <div className="md:container px-2 md:px-0 ">
         <div className=" w-full flex items-center justify-between gap-1">
           <div className="flex items-center justify-start gap-4">
@@ -37,7 +37,7 @@ const Header = async () => {
           </div>
           <div className="flex items-center justify-end gap-2 w-fit">
             {user ? <SignOut /> : <SignIn />}
-            <NotifNav />
+            <NotifNav user={{ name: user?.name, image: user?.image }} />
           </div>
         </div>
       </div>
