@@ -5,7 +5,7 @@ import Link from "next/link";
 import { auth } from "@/auth";
 import SignOut from "@/components/SignOut";
 import SignIn from "@/components/SignIn";
-import AuthionAction from "./AuthionAction";
+import MainNav from "./MainNav";
 
 const Header = async () => {
   const session = await auth();
@@ -32,9 +32,7 @@ const Header = async () => {
                 <span className="text-orange-500">BidBay</span>.com
               </h5>
             </Link>
-            <div className="flex items-center justify-start gap-1">
-              <AuthionAction />
-            </div>
+            <MainNav />
           </div>
           <div className="flex items-center justify-end gap-2 w-fit">
             {user ? <SignOut /> : <SignIn />}

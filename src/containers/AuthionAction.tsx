@@ -1,34 +1,41 @@
 "use client";
-
 import CustomTooltip from "@/components/ui/CustomTooltip";
 import { cn } from "@/lib/utils";
-import { Gavel } from "lucide-react";
+import { LucideIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
-const AuthionAction = () => {
+const AuthionAction = ({
+  url,
+  Icon,
+  label,
+}: {
+  Icon: LucideIcon;
+  label: string;
+  url: string;
+}) => {
   const pathname = usePathname();
-  const isActive = !!pathname?.endsWith("/items/create");
+  const isActive = !!pathname?.endsWith(url);
   return (
     <Link
-      href={"/items/create"}
+      href={url}
       className={cn(
         "flex items-center justify-center capitalize px-3 py-2 text-slate-400 hover:text-white transition-all",
         isActive && "text-orange-500"
       )}
     >
       <span className="hidden md:flex items-center justify-center gap-1">
-        <Gavel className="w-4 h-4" />
-        auction item
+        <Icon className="w-4 h-4" />
+        {label}
       </span>
       <CustomTooltip
         className="md:hidden"
         align="center"
-        content="auction item"
+        content={label}
         side="bottom"
       >
-        <Gavel className="w-4 h-4 md:hidden" />
+        <Icon className="w-4 h-4 md:hidden" />
       </CustomTooltip>
     </Link>
   );
