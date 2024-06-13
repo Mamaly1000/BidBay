@@ -10,8 +10,8 @@ export const env = createEnv({
   client: {
     NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME: z.string().min(1),
     NEXT_PUBLIC_CLOUDINARY_CLOUD_PRESET: z.string().min(1),
-    // NEXT_PUBLIC_KNOCK_PUBLIC_API_KEY: z.string().min(1),
-    // NEXT_PUBLIC_KNOCK_FEED_ID: z.string().min(1),
+    NEXT_PUBLIC_KNOCK_PUBLIC_API_KEY: z.string().min(1),
+    NEXT_PUBLIC_KNOCK_FEED_ID: z.string().min(1),
   },
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
@@ -21,8 +21,8 @@ export const env = createEnv({
     NEXT_PUBLIC_CLOUDINARY_CLOUD_PRESET:
       process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_PRESET,
       KNOCK_SECRET_KEY: process.env.KNOCK_SECRET_KEY,
-    // NEXT_PUBLIC_KNOCK_PUBLIC_API_KEY:
-    //   process.env.NEXT_PUBLIC_KNOCK_PUBLIC_API_KEY,
-    // NEXT_PUBLIC_KNOCK_FEED_ID: process.env.NEXT_PUBLIC_KNOCK_FEED_ID,
+    NEXT_PUBLIC_KNOCK_PUBLIC_API_KEY:
+      process.env.NEXT_PUBLIC_KNOCK_PUBLIC_API_KEY,
+    NEXT_PUBLIC_KNOCK_FEED_ID: process.env.NEXT_PUBLIC_KNOCK_FEED_ID,
   },
 });

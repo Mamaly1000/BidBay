@@ -1,8 +1,12 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
+import "@knocklabs/react/dist/index.css";
+
 import { cn } from "@/lib/utils";
 import Header from "@/containers/Header";
+import NotificationProvider from "@/providers/NotificationProvider";
+import { SessionProvider } from "next-auth/react";
 
 const roboto = Roboto({ subsets: ["latin"], preload: true, weight: "400" });
 
@@ -18,15 +22,19 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={cn(
-          roboto.className,
-          "min-h-screen bg-neutral-700 text-white antialiased"
-        )}
-      >
-        <Header />
-        <main className="w-full p-2 lg:p-5">{children}</main>
-      </body>
+      <SessionProvider>
+        <NotificationProvider>
+          <body
+            className={cn(
+              roboto.className,
+              "min-h-screen bg-neutral-700 text-white antialiased"
+            )}
+          >
+            <Header />
+            <main className="w-full p-2 lg:p-5">{children}</main>
+          </body>
+        </NotificationProvider>
+      </SessionProvider>
     </html>
   );
 }

@@ -5,7 +5,8 @@ import Link from "next/link";
 import { auth } from "@/auth";
 import SignOut from "@/components/SignOut";
 import SignIn from "@/components/SignIn";
-import MainNav from "./MainNav";
+import MainNav from "./MainNav"; 
+import NotifNav from "./NotifNav";
 
 const Header = async () => {
   const session = await auth();
@@ -36,6 +37,7 @@ const Header = async () => {
           </div>
           <div className="flex items-center justify-end gap-2 w-fit">
             {user ? <SignOut /> : <SignIn />}
+            <NotifNav />
           </div>
         </div>
       </div>
