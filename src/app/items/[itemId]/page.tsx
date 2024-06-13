@@ -25,6 +25,9 @@ const ItemPage = async ({ params }: { params: { itemId: string } }) => {
   if (!session || !session.user) {
     return <AuthMessage message="You must be logged in to place a bid!" />;
   }
+  if (isNaN(parseFloat(params?.itemId))) {
+    return <Message image={pic.src} message="item id is not valid!" />;
+  }
   const item = await database.query.items.findFirst({
     where: eq(items.id, parseInt(params.itemId)),
   });

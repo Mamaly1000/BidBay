@@ -33,6 +33,10 @@ export async function createBidAction(itemId: number) {
     throw new Error("This auction is already over");
   }
 
+  if (session.user.id === item.userId) {
+    throw new Error("you can not bid your own item!");
+  }
+
   const latestBidValue = item.currentBid + item.bidInterval;
 
   await database.insert(bids).values({
@@ -88,6 +92,8 @@ export async function createBidAction(itemId: number) {
         itemId,
         bidAmount: latestBidValue,
         itemName: item.name,
+        actionUser: session.user.name,
+        actionUserImage: session.user.image,
       },
     });
   }
