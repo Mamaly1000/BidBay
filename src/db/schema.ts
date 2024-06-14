@@ -94,5 +94,12 @@ export const usersRelations = relations(bids, ({ one }) => ({
     references: [users.id],
   }),
 }));
+export const item_to_user_relations = relations(items, ({ one }) => ({
+  user: one(users, {
+    fields: [items.userId],
+    references: [users.id],
+  }),
+}));
 
 export type Item = typeof items.$inferSelect;
+export type User = typeof users.$inferSelect;

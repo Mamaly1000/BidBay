@@ -11,7 +11,7 @@ export default async function HomePage() {
     return <AuthMessage message="you are not authorized!" />;
   }
 
-  const items = await database.query.items.findMany();
+  const items = await database.query.items.findMany({ with: { user: true } });
 
   return (
     <section className="w-full flex flex-col items-start justify-start gap-10">
@@ -19,7 +19,7 @@ export default async function HomePage() {
         title="items for sale"
         subHeading="here you can bid items that are available for sale."
       />
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-5 w-full">
+      <div className="flex flex-wrap items-start justify-center sm:justify-start gap-1 w-full">
         {items.map((item) => (
           <ItemCard item={item} key={item.id} />
         ))}

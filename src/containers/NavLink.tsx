@@ -6,14 +6,16 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
-const AuthionAction = ({
+const NavLink = ({
   url,
   Icon,
   label,
+  className,
 }: {
   Icon: LucideIcon;
   label: string;
   url: string;
+  className?: string;
 }) => {
   const pathname = usePathname();
   const isActive = !!pathname?.endsWith(url);
@@ -22,23 +24,16 @@ const AuthionAction = ({
       href={url}
       className={cn(
         "flex items-center justify-center capitalize px-3 py-2 text-slate-400 hover:text-white transition-all",
-        isActive && "text-orange-500"
+        isActive && "text-orange-500",
+        className
       )}
     >
-      <span className="hidden md:flex items-center justify-center gap-1">
-        <Icon className="w-4 h-4" />
+      <span className=" flex items-center justify-center gap-3">
+        <Icon className="w-5 h-5" />
         {label}
       </span>
-      <CustomTooltip
-        className="md:hidden"
-        align="center"
-        content={label}
-        side="bottom"
-      >
-        <Icon className="w-4 h-4 md:hidden" />
-      </CustomTooltip>
     </Link>
   );
 };
 
-export default AuthionAction;
+export default NavLink;

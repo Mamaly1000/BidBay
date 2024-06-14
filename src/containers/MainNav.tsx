@@ -1,13 +1,13 @@
 "use client";
 import { headertems } from "@/lib/utils";
 import React from "react";
-import AuthionAction from "./AuthionAction";
+import NavLink from "./NavLink";
 
 const MainNav = () => {
   return (
-    <div className="flex items-center justify-start gap-1">
+    <div className="hidden lg:flex items-center justify-start gap-1 ">
       {headertems.map((i) => (
-        <AuthionAction key={i.url} Icon={i.Icon} label={i.label} url={i.url} />
+        <NavLink key={i.url} Icon={i.Icon} label={i.label} url={i.url} />
       ))}
     </div>
   );

@@ -1,6 +1,7 @@
 "use client";
 import UserAvatar from "@/components/ui/UserAvatar";
 import { env } from "@/env";
+import { useSidebar } from "@/hooks/use-sidebar-store";
 import { formatToDollar } from "@/lib/utils";
 import {
   KnockFeedProvider,
@@ -18,6 +19,9 @@ const NotifNav = ({
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const notifButtonRef = useRef(null);
+
+  const { onChange: onSidebarDisplay } = useSidebar();
+
   return (
     <KnockFeedProvider colorMode="dark" feedId={env.NEXT_PUBLIC_KNOCK_FEED_ID}>
       <NotificationIconButton
@@ -66,7 +70,19 @@ const NotifNav = ({
           );
         }}
       />
-      <UserAvatar src={user?.image} fallback={user?.name} />
+      <UserAvatar
+        onClick={() => onSidebarDisplay(true)}
+        tooltip
+        src={user?.image}
+        fallback={user?.name}
+        className="lg:hidden"
+      />
+      <UserAvatar 
+        tooltip
+        src={user?.image}
+        fallback={user?.name}
+        className=" hidden lg:block"
+      />
     </KnockFeedProvider>
   );
 };

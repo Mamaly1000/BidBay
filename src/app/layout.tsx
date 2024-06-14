@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import Header from "@/containers/Header";
 import NotificationProvider from "@/providers/NotificationProvider";
 import { SessionProvider } from "next-auth/react";
+import SideBar from "@/containers/SideBar";
 
 const roboto = Roboto({ subsets: ["latin"], preload: true, weight: "400" });
 
@@ -31,6 +32,7 @@ export default function RootLayout({
             )}
           >
             <Header />
+            <SideBar />
             <main className="w-full p-2 lg:p-5">{children}</main>
           </body>
         </NotificationProvider>

@@ -13,7 +13,7 @@ const Header = async () => {
   const user = session?.user;
 
   return (
-    <section className="bg-neutral-800 text-white w-full border-b-[1px] border-orange-500 dark">
+    <section className="bg-neutral-800 text-white w-full border-b-[1px] border-orange-500 dark max-w-full">
       <div className="md:container px-2 md:px-0 ">
         <div className=" w-full flex items-center justify-between gap-1">
           <div className="flex items-center justify-start gap-4">
@@ -35,9 +35,15 @@ const Header = async () => {
             </Link>
             <MainNav />
           </div>
-          <div className="flex items-center justify-end gap-2 w-fit">
-            {user ? <SignOut /> : <SignIn />}
-            <NotifNav user={{ name: user?.name, image: user?.image }} />
+          <div className="flex items-center justify-end gap-2 w-fit pe-2">
+            {user ? (
+              <SignOut className="hidden md:flex light" />
+            ) : (
+              <SignIn className="" />
+            )}
+            {user && (
+              <NotifNav user={{ name: user?.name, image: user?.image }} />
+            )}
           </div>
         </div>
       </div>

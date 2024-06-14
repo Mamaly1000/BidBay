@@ -3,14 +3,16 @@ import { signOut } from "@/auth";
 import { Button } from "./ui/button";
 import { LogOut } from "lucide-react";
 import CustomTooltip from "./ui/CustomTooltip";
+import { cn } from "@/lib/utils";
 
-export function SignOut() {
+export function SignOut({ className }: { className?: string }) {
   return (
     <form
       action={async () => {
         "use server";
         await signOut();
       }}
+      className={cn(className)}
     >
       <Button className="hidden md:flex" variant={"outline"} type="submit">
         SignOut

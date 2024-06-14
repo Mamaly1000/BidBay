@@ -10,10 +10,11 @@ import { Button } from "./button";
 
 interface props {
   children?: ReactNode;
-  content?: string;
+  content?: ReactNode | string;
   align?: "center" | "end" | "start" | undefined;
   side?: "top" | "right" | "bottom" | "left" | undefined;
   className?: string;
+  onClick?: () => void;
 }
 const CustomTooltip = ({
   className,
@@ -21,20 +22,23 @@ const CustomTooltip = ({
   content,
   align,
   side,
+  onClick,
 }: props) => {
   return (
     <TooltipProvider>
       <Tooltip>
-        <TooltipTrigger className={className} asChild>
+        <TooltipTrigger onClick={onClick} className={className} asChild>
           {children}
         </TooltipTrigger>
-        <TooltipContent
-          className="bg-neutral-800 border-orange-800"
-          side={side}
-          align={align}
-        >
-          <p className="text-orange-300 capitalize">{content}</p>
-        </TooltipContent>
+        {content && (
+          <TooltipContent
+            className="bg-neutral-800 border-orange-800"
+            side={side}
+            align={align}
+          >
+            <p className="text-orange-300 capitalize">{content}</p>
+          </TooltipContent>
+        )}
       </Tooltip>
     </TooltipProvider>
   );
